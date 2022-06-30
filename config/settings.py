@@ -21,6 +21,7 @@ INSTALLED_APPS = [
 
     # installed app's
     'main',
+    'account'
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ MEDIA_ROOT = BASE_DIR / 'static/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # change default user model 
-# AUTH_USER_MODEL = "account.Account"
+AUTH_USER_MODEL = "account.Account"
 
 # message tags
 MESSAGE_TAGS = {
