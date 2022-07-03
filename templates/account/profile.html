@@ -3,25 +3,25 @@
 {% load static %}
 
 {% block content %}
-<div class="container my-4">
+<div class="container my-3">
   
   <div class="row gy-2 gx-md-5">
     
     <!-- Right Section -->
     <div class="col-md-8 p-0">
       <div class="bg-white shadow">
-        <ul class="list-group">
+        <ul class="list-group rounded-0">
           <li class="list-group-item">
             <strong>Username: </strong>{{ username }}
           </li>
           <li class="list-group-item">
-            <strong>Email Address: </strong>{{ email }}
+            <strong>Email Address: </strong>{{ email | default:"Has not been entered..." }}
           </li>
           <li class="list-group-item">
-            <strong>First Name: </strong>{{ first_name }}
+            <strong>First Name: </strong>{{ first_name | default:"Has not been entered..." }}
           </li>
           <li class="list-group-item">
-            <strong>Last Name: </strong>{{ last_name }}
+            <strong>Last Name: </strong>{{ last_name | default:"Has not been entered..." }}
           </li>
           <li class="list-group-item">
             <strong>Date Joined: </strong>{{ date_joined }}
@@ -44,6 +44,11 @@
               class="list-group-item list-group-item-action">
               <i class="fa-solid fa-key"></i>
               Change Password
+            </a>
+            <a href="{% url 'account:profile_update' %}"
+              class="list-group-item list-group-item-action">
+              <i class="fa-solid fa-user-pen"></i>
+              Update Profile
             </a>
             <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
             <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>

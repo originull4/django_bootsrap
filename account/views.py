@@ -38,11 +38,11 @@ class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
         user_info = {
             'username': request.user.username,
-            'email': request.user.email or '-----------',
-            'first_name': request.user.first_name or '-----------',
-            'last_name': request.user.last_name or '-----------',
+            'email': request.user.email,
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
             'date_joined': request.user.date_joined,
-            'gender': request.user.gender or '-----------',
+            'gender': request.user.gender,
             'avatar': request.user.avatar.url,
         }
         return render(request, self.template_name, user_info)
@@ -98,3 +98,17 @@ class PasswordChangeView(View):
     def get(self, request):
         self.form = self.form(user=request.user)
         return render(request, self.template_name, {'form': self.form})
+
+
+class ProfileUpdateView(LoginRequiredMixin, View):
+
+    template_name = 'account/profile_update.html'
+    form = ProfileUpdateForm
+    success_message = _('Your Profile has been updated successfully.')
+    error_message = _('Update failed!!!. Please check your information and try again.')
+
+    def post(self, request):
+        pass
+
+    def get(self, request):
+        return render(request, self.template_name, {'form': self.form(instance=request.user)})
