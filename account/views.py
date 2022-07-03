@@ -38,14 +38,14 @@ class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
         user_info = {
             'username': request.user.username,
-            'email': request.user.email,
-            'first_name': request.user.first_name,
-            'last_name': request.user.last_name,
+            'email': request.user.email or '-----------',
+            'first_name': request.user.first_name or '-----------',
+            'last_name': request.user.last_name or '-----------',
             'date_joined': request.user.date_joined,
-            'gender': request.user.gender,
+            'gender': request.user.gender or '-----------',
             'avatar': request.user.avatar.url,
         }
-        return render(request, self.template_name, {'user_info': user_info})
+        return render(request, self.template_name, user_info)
 
 
 class LoginView(LogoutRequiredMixin, View):

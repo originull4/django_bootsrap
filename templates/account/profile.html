@@ -3,22 +3,42 @@
 {% load static %}
 
 {% block content %}
-<div class="container my-4 shadow">
-  <div class="row gy-2 gx-lg-5 gx-md-5">
+<div class="container my-4">
+  
+  <div class="row gy-2 gx-md-5">
+    
     <!-- Right Section -->
-    <div class="col-md-8 col-lg-7 bg-white">
-      form
+    <div class="col-md-8 p-0">
+      <div class="bg-white shadow">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>Username: </strong>{{ username }}
+          </li>
+          <li class="list-group-item">
+            <strong>Email Address: </strong>{{ email }}
+          </li>
+          <li class="list-group-item">
+            <strong>First Name: </strong>{{ first_name }}
+          </li>
+          <li class="list-group-item">
+            <strong>Last Name: </strong>{{ last_name }}
+          </li>
+          <li class="list-group-item">
+            <strong>Date Joined: </strong>{{ date_joined }}
+          </li>
+        </ul>
+      </div>
     </div>
 
     <!-- Left Section -->
-    <div class="col-md-4 col-lg-5">
+    <div class="col-md-4">
       <div class="row gy-2">
 
-        <div class="bg-white">
-          <img src="{{ user_info.avatar }}" class="w-100" />
+        <div class="bg-white shadow">
+          <img src="{{ avatar }}" class="w-100" />
         </div>
 
-        <div class="bg-white p-0">
+        <div class="bg-white p-0 shadow">
           <div class="list-group rounded-0">
             <a href="{% url 'account:password_change' %}"
               class="list-group-item list-group-item-action">
