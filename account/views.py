@@ -36,7 +36,16 @@ class ProfileView(LoginRequiredMixin, View):
     template_name = 'account/profile.html'
 
     def get(self, request):
-        return render(request, self.template_name)
+        user_info = {
+            'username': request.user.username,
+            'email': request.user.email,
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
+            'date_joined': request.user.date_joined,
+            'gender': request.user.gender,
+            'avatar': request.user.avatar.url,
+        }
+        return render(request, self.template_name, {'user_info': user_info})
 
 
 class LoginView(LogoutRequiredMixin, View):
@@ -60,17 +69,18 @@ class LoginView(LogoutRequiredMixin, View):
         return render(request, self.template_name, {'form': self.form})
 
 
-class LogoutView(View):
+class LogoutView(LoginRequiredMixin, View):
+
+    template_name = 'account/logout.html'
 
     def get(self, request):
         logout(request)
-        if 'next' in request.GET: return redirect (request.GET.get('next'))
-        return redirect('account:login')
+        return render(request, self.template_name)
 
 
 class PasswordChangeView(View):
 
-    template_name = 'account/password_update.html'
+    template_name = 'account/password_change.html'
     form = PasswordForm
     success_message = _('Your password has been changed successfully.')
     error_message = _('Password change failed!!!. Please check your information and try again.')

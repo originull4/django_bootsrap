@@ -2,5 +2,25 @@
 {% block title %}Login{% endblock title %}
 
 {% block content %}
-Login Page  
+<div class="fs-5 fw-bolder my-4 text-center">Member login</div>
+<div class="container mt-4">
+  <div class="col-xl-5 col-md-8 bg-white shadow-5-strong mx-auto p-5">
+    {% include "form.html" with form=form btn_text='Login'%}
+    <div class="text-center">Not a member? <a href="{% url 'account:register' %}">Register</a></div>
+  </div>
+</div>
+
+
+
 {% endblock content %}
+
+
+
+<div class="container">
+  <div class="card col-md-6 col-lg-5 mx-auto shadow">
+    <div class="card-body">
+      {% include "form.html" with form=form btn_text='Login'%}
+      <p class="text-center">Don't have account? <a href="{% url 'account:register' %}">Register Now</a></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<form method="post">
+  {% csrf_token %}
+  <div class="form-outline">
+    <input type="password" id="typePassword" class="form-control" />
+    <label class="form-label" for="typePassword">Password input</label>
+  </div>
+
+
+  {% if form.non_field_errors %}
+  <!-- Form Errors -> If Form Clean Mehtod raise error -->
+  <div class="border border-danger p-2 mb-2" style="--bs-border-opacity: .5;">
+    {% for err in form.non_field_errors %}
+    <p class="text-danger">{{ err }}</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+
+  {% for field in form %}
+  <div class="mb-4">
+
+    <div class="form-outline">
+      {{ field }}
+      <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+    </div>
+
+    {% if field.help_text %}
+    <!-- help text -->
+    <div class="form-text font-12">{{ field.help_text }}</div>
+    {% endif %}
+
+    {% if field.errors %} {% for error in field.errors %}
+    <!-- field errors -->
+    <div class="text-danger font-12">{{ error }}</div>
+    {% endfor %}{% endif %}
+
+  </div>
+  {% endfor %}
+
+  <button type="submit" class="btn btn-primary btn-block mb-4">{{ btn_text }}</button>
+
+</form>

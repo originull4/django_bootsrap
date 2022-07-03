@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Logout{% endblock title %}
+
+{% block content %}
+<div class="container">
+  <div class="fs-5 fw-bolder my-4">Logged out</div>
+  <p>Thanks for spending some quality time with the website today.</p>
+  <a href="{% url 'account:login' %}">Login again</a>
+</div>
+{% endblock content %}
