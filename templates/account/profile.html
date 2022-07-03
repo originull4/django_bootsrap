@@ -21,13 +21,13 @@
         <div class="bg-white p-0">
           <div class="list-group rounded-0">
             <a href="{% url 'account:password_change' %}"
-              class="list-group-item list-group-item-action px-3">
+              class="list-group-item list-group-item-action">
               <i class="fa-solid fa-key"></i>
               Change Password
             </a>
-            <a href="#" class="list-group-item list-group-item-action px-3">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item list-group-item-action px-3">Morbi leo risus</a>
-            <a href="#" class="list-group-item list-group-item-action px-3">Porta ac consectetur ac</a>
+            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
           </div>
         </div>
 
@@ -37,15 +37,3 @@
   </div>
 </div>
 {% endblock content %}
-
-<div class="card-body col-md-8 col-lg-7">
-  <h4 class="card-title">Your pofile info</h4>
-  <div class="card-text">
-    {% for key, value in user_info.items %}
-    <div class="border-bottom mb-3">{{ key }} : {{ value }}</div>
-    {% endfor %}
-    <a href="{% url 'account:password_change' %}" class="card-link">Change your password</a>
-  </div>
-</div>
-
-</div>

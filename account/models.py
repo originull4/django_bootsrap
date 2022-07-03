@@ -13,7 +13,7 @@ def avatar_upload(instance, filename):
 class Account(AbstractUser):
     GENDER_CHOICES = (('Male', 'Male'),('Female', 'Female'))
 
-    gender = models.CharField(max_length=6, blank=False, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=6, blank=False, choices=GENDER_CHOICES, default='Male')
     avatar = models.ImageField(upload_to=avatar_upload, default='avatars/default.png')
 
 

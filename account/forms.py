@@ -13,8 +13,10 @@ class RegistrationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'
-            # visible.field.widget.attrs['placeholder'] = visible.label
+            if visible.widget_type == 'select':
+                visible.field.widget.attrs['class'] = 'form-select'
+            else: visible.field.widget.attrs['class'] = 'form-control'
+            visible.field.widget.attrs['placeholder'] = visible.label
 
 
 class LoginForm(AuthenticationForm):
@@ -23,7 +25,7 @@ class LoginForm(AuthenticationForm):
         super(LoginForm, self).__init__(*args, **kwargs)
         for field in self.visible_fields():
             field.field.widget.attrs['class'] = 'form-control'
-            # field.field.widget.attrs['placeholder'] = field.label
+            field.field.widget.attrs['placeholder'] = field.label
 
 
 class PasswordForm(PasswordChangeForm):

@@ -9,18 +9,4 @@
     <div class="text-center">Not a member? <a href="{% url 'account:register' %}">Register</a></div>
   </div>
 </div>
-
-
-
 {% endblock content %}
-
-
-
-<div class="container">
-  <div class="card col-md-6 col-lg-5 mx-auto shadow">
-    <div class="card-body">
-      {% include "form.html" with form=form btn_text='Login'%}
-      <p class="text-center">Don't have account? <a href="{% url 'account:register' %}">Register Now</a></p>
-    </div>
-  </div>
-</div>
